@@ -35,7 +35,7 @@ func TestGetStatus(t *testing.T) {
 			      "workers": 13,
 			      "estimate_current": "0.00181736",
 			      "estimate_last24h": "0.00164080",
-			      "actual_last24h": "1.94134",
+			      "actual_last24h": "",
 			      "rental_current": "1.95910447",
 			      "lastbloc": 664076,
 			      "timesincelast": 582
@@ -66,7 +66,7 @@ func TestGetStatus(t *testing.T) {
 			Workers: 13,
 			EstimateCurrent: 0.00181736,
 			EstimateLast24h: 0.00164080,
-			ActualLast24h: 1.94134,
+			ActualLast24h: 0,
 			RentalCurrent: 1.95910447,
 			LastBlock: 664076,
 			TimeSinceLast: 582,

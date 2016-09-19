@@ -1,5 +1,11 @@
 package yiimp
 
+import (
+	"encoding/json"
+	"strconv"
+	"strings"
+)
+
 type PoolStatus map[string]Algo
 
 type Algo struct {
@@ -15,6 +21,29 @@ type Algo struct {
 	RentalCurrent   float64 `json:"rental_current,string"`
 	LastBlock       uint32 `json:"lastbloc"`
 	TimeSinceLast   uint32 `json:"timesincelast"`
+}
+
+func (a *Algo) UnmarshalJSON(data []byte) error {
+	type Alias Algo
+	aux := &struct {
+		ActualLast24h string `json:"actual_last24h"`
+		*Alias
+	}{
+		Alias: (*Alias)(a),
+	}
+	if err := json.Unmarshal(data, &aux); err != nil {
+		return err
+	}
+	if len(aux.ActualLast24h) == 0 {
+		a.ActualLast24h = 0
+		return nil
+	}
+	val, err := strconv.ParseFloat(strings.Trim(aux.ActualLast24h, "\""), 64)
+	if err != nil {
+		return err
+	}
+	a.ActualLast24h = val
+	return nil
 }
 
 func (client *YiimpClient) GetStatus() (PoolStatus, error) {
