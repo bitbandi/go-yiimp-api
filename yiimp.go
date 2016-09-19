@@ -10,19 +10,23 @@ import (
 )
 
 type YiimpClient struct {
-	sling  *sling.Sling
-	apikey string
+	sling      *sling.Sling
+	httpClient *yiimpHttpClient
+	apikey     string
 }
 
 // server send the api response with text/html content type
 // we fix this: change content type to json
 type yiimpHttpClient struct {
 	client    *http.Client
+	debug     bool
 	useragent string
 }
 
 func (d yiimpHttpClient) Do(req *http.Request) (*http.Response, error) {
-	//d.dumpRequest(req)
+	if d.debug {
+		d.dumpRequest(req)
+	}
 	if d.useragent != "" {
 		req.Header.Set("User-Agent", d.useragent)
 	}
@@ -55,7 +59,9 @@ func (d yiimpHttpClient) Do(req *http.Request) (*http.Response, error) {
 		}
 	}
 	resp, err := client.Do(req)
-	//d.dumpResponse(resp)
+	if d.debug {
+		d.dumpResponse(resp)
+	}
 	if err == nil {
 		if strings.HasPrefix(resp.Header.Get("Content-Type"), "text/html") {
 			resp.Header.Set("Content-Type", "application/json")
@@ -91,9 +97,14 @@ func (d yiimpHttpClient) dumpResponse(r *http.Response) {
 }
 
 func NewYiimpClient(client *http.Client, BaseURL string, ApiKey string, UserAgent string) *YiimpClient {
-	yiimpclient := &yiimpHttpClient{client:client, useragent:UserAgent}
+	httpClient := &yiimpHttpClient{client:client, useragent:UserAgent}
 	return &YiimpClient{
-		sling: sling.New().Doer(yiimpclient).Base(BaseURL).Path("/api/"),
+		httpClient: httpClient,
+		sling: sling.New().Doer(httpClient).Base(BaseURL).Path("/api/"),
 		apikey: ApiKey,
 	}
+}
+
+func (client YiimpClient) SetDebug(debug bool) {
+	client.httpClient.debug = debug
 }
