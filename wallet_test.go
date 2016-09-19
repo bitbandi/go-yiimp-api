@@ -63,6 +63,16 @@ func TestGetWalletEx(t *testing.T) {
 			         "subscribe":0,
 			         "accepted":358763314.0657903,
 			         "rejected":153755706.02819583
+			      },
+			      {
+			         "version":"cgminer/1.0.5",
+			         "password":"d=0.004",
+			         "ID":"",
+			         "algo":"x11",
+			         "difficulty":0.004,
+			         "subscribe":,
+			         "accepted":,
+			         "rejected":153755706.02819583
 			      }
 			   ]
 			}`
@@ -83,6 +93,16 @@ func TestGetWalletEx(t *testing.T) {
 				Difficulty:0.004,
 				Subscribe:0,
 				Accepted:358763314.0657903,
+				Rejected:153755706.02819583,
+			},
+			Miner{
+				Version:"cgminer/1.0.5",
+				Password:"d=0.004",
+				Id:"",
+				Algo:"x11",
+				Difficulty:0.004,
+				Subscribe:0,
+				Accepted:0,
 				Rejected:153755706.02819583,
 			},
 		}}

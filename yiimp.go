@@ -2,7 +2,9 @@ package yiimp
 
 import (
 	"github.com/dghubble/sling"
+	"bytes"
 	"crypto/tls"
+	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
 	"log"
@@ -67,6 +69,9 @@ func (d yiimpHttpClient) Do(req *http.Request) (*http.Response, error) {
 			resp.Header.Set("Content-Type", "application/json")
 		}
 	}
+	body, err := ioutil.ReadAll(resp.Body);
+	body = bytes.Replace(body, []byte(":,"), []byte(":\"\","), -1)
+	resp.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 	return resp, err
 }
 
