@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"log"
+	"regexp"
 	"strings"
 )
 
@@ -70,7 +71,8 @@ func (d yiimpHttpClient) Do(req *http.Request) (*http.Response, error) {
 		}
 	}
 	body, err := ioutil.ReadAll(resp.Body);
-	body = bytes.Replace(body, []byte(":,"), []byte(":\"\","), -1)
+	reg, _ := regexp.Compile(": *,")
+	body = reg.ReplaceAll(body, []byte(":\"\","))
 	resp.Body = ioutil.NopCloser(bytes.NewBuffer(body))
 	return resp, err
 }

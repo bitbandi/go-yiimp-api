@@ -70,7 +70,7 @@ func TestGetWalletEx(t *testing.T) {
 			         "ID":"",
 			         "algo":"x11",
 			         "difficulty":0.004,
-			         "subscribe":,
+			         "subscribe": ,
 			         "accepted":,
 			         "rejected":153755706.02819583
 			      }
