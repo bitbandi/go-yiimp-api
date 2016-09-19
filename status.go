@@ -19,7 +19,6 @@ type Algo struct {
 	EstimateLast24h float64 `json:"estimate_last24h,string"`
 	ActualLast24h   float64 `json:"actual_last24h,string"`
 	RentalCurrent   float64 `json:"rental_current,string"`
-	LastBlock       uint32 `json:"lastbloc"`
 	TimeSinceLast   uint32 `json:"timesincelast"`
 }
 

@@ -23,7 +23,6 @@ func TestGetStatus(t *testing.T) {
 			      "estimate_last24h": "0.01821587",
 			      "actual_last24h": "17.73317",
 			      "rental_current": "13.97979333",
-			      "lastbloc": 380094,
 			      "timesincelast": 46
 			   },
 			   "test2": {
@@ -37,7 +36,6 @@ func TestGetStatus(t *testing.T) {
 			      "estimate_last24h": "0.00164080",
 			      "actual_last24h": "",
 			      "rental_current": "1.95910447",
-			      "lastbloc": 664076,
 			      "timesincelast": 582
 			   }
 			}`
@@ -54,7 +52,6 @@ func TestGetStatus(t *testing.T) {
 			EstimateLast24h: 0.01821587,
 			ActualLast24h: 17.73317,
 			RentalCurrent: 13.97979333,
-			LastBlock: 380094,
 			TimeSinceLast: 46,
 		},
 		"test2": Algo{
@@ -68,7 +65,6 @@ func TestGetStatus(t *testing.T) {
 			EstimateLast24h: 0.00164080,
 			ActualLast24h: 0,
 			RentalCurrent: 1.95910447,
-			LastBlock: 664076,
 			TimeSinceLast: 582,
 
 		},
