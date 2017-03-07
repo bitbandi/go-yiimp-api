@@ -22,6 +22,7 @@ func TestGetStatus(t *testing.T) {
 			      "estimate_current": "0.01343157",
 			      "estimate_last24h": "0.01821587",
 			      "actual_last24h": "17.73317",
+			      "hashrate_last24h": 29817174797.385,
 			      "rental_current": "13.97979333",
 			      "timesincelast": 46
 			   },
@@ -35,6 +36,7 @@ func TestGetStatus(t *testing.T) {
 			      "estimate_current": "0.00181736",
 			      "estimate_last24h": "0.00164080",
 			      "actual_last24h": "",
+			      "hashrate_last24h": 10668316988.396,
 			      "rental_current": "1.95910447",
 			      "timesincelast": 582
 			   }
@@ -51,6 +53,7 @@ func TestGetStatus(t *testing.T) {
 			EstimateCurrent: 0.01343157,
 			EstimateLast24h: 0.01821587,
 			ActualLast24h: 17.73317,
+			Hashrate24h: 29817174797.385,
 			RentalCurrent: 13.97979333,
 			TimeSinceLast: 46,
 		},
@@ -64,6 +67,7 @@ func TestGetStatus(t *testing.T) {
 			EstimateCurrent: 0.00181736,
 			EstimateLast24h: 0.00164080,
 			ActualLast24h: 0,
+			Hashrate24h: 10668316988.396,
 			RentalCurrent: 1.95910447,
 			TimeSinceLast: 582,
 
