@@ -25,7 +25,7 @@ type Algo struct {
 func (a *Algo) UnmarshalJSON(data []byte) error {
 	type Alias Algo
 	aux := &struct {
-		ActualLast24h string `json:"actual_last24h"`
+		ActualLast24h interface{} `json:"actual_last24h"`
 		*Alias
 	}{
 		Alias: (*Alias)(a),
@@ -33,15 +33,24 @@ func (a *Algo) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &aux); err != nil {
 		return err
 	}
-	if len(aux.ActualLast24h) == 0 {
-		a.ActualLast24h = 0
-		return nil
+	switch aux.ActualLast24h.(type) {
+	case string:
+		if len(aux.ActualLast24h.(string)) == 0 {
+			a.ActualLast24h = 0
+			return nil
+		}
+		val, err := strconv.ParseFloat(strings.Trim(aux.ActualLast24h.(string), "\""), 64)
+		if err != nil {
+			return err
+		}
+		a.ActualLast24h = val
+	case float64:
+		a.ActualLast24h = aux.ActualLast24h.(float64)
+	case int:
+		a.ActualLast24h = float64(aux.ActualLast24h.(int))
+	default:
+		panic("JSON type not understood")
 	}
-	val, err := strconv.ParseFloat(strings.Trim(aux.ActualLast24h, "\""), 64)
-	if err != nil {
-		return err
-	}
-	a.ActualLast24h = val
 	return nil
 }
 
