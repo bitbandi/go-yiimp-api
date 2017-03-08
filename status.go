@@ -20,7 +20,6 @@ type Algo struct {
 	ActualLast24h   float64 `json:"actual_last24h,string"`
 	Hashrate24h     float64 `json:"hashrate_last24h"`
 	RentalCurrent   float64 `json:"rental_current,string"`
-	TimeSinceLast   uint32 `json:"timesincelast"`
 }
 
 func (a *Algo) UnmarshalJSON(data []byte) error {
