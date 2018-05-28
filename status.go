@@ -19,6 +19,7 @@ type Algo struct {
 	EstimateLast24h float64 `json:"estimate_last24h,string"`
 	ActualLast24h   float64 `json:"actual_last24h,string"`
 	Hashrate24h     float64 `json:"hashrate_last24h"`
+	UnitFactor      float64 `json:"mbtc_mh_factor,omitempty"`
 	RentalCurrent   float64 `json:"rental_current,string"`
 }
 

@@ -23,6 +23,7 @@ func TestGetStatus(t *testing.T) {
 			      "estimate_last24h": "0.01821587",
 			      "actual_last24h": "17.73317",
 			      "hashrate_last24h": 29817174797.385,
+			      "mbtc_mh_factor": 1000,
 			      "rental_current": "13.97979333"
 			   },
 			   "test2": {
@@ -52,6 +53,7 @@ func TestGetStatus(t *testing.T) {
 			EstimateLast24h: 0.01821587,
 			ActualLast24h: 17.73317,
 			Hashrate24h: 29817174797.385,
+			UnitFactor: 1000,
 			RentalCurrent: 13.97979333,
 		},
 		"test2": Algo{
@@ -65,6 +67,7 @@ func TestGetStatus(t *testing.T) {
 			EstimateLast24h: 0.00164080,
 			ActualLast24h: 0,
 			Hashrate24h: 10668316988.396,
+			UnitFactor: 0,
 			RentalCurrent: 1.95910447,
 
 		},
