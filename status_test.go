@@ -38,6 +38,31 @@ func TestGetStatus(t *testing.T) {
 			      "actual_last24h": "",
 			      "hashrate_last24h": 10668316988.396,
 			      "rental_current": "1.95910447"
+			   },
+			   "test3": {
+			      "name": "test3",
+			      "port": 6576,
+			      "coins": 3,
+			      "fees": 2,
+			      "hashrate": 2863888,
+			      "workers": 4,
+			      "estimate_current": 0.00000339,
+			      "estimate_last24h": 0.00000433,
+			      "actual_last24h": 0.0037,
+			      "hashrate_last24h": 1876221955.0729,
+			      "rental_current": 1.36776496
+			   },
+			   "test4": {
+			      "name": "test4",
+			      "port": 8453,
+			      "coins": 3,
+			      "fees": 2,
+			      "hashrate": 2863888,
+			      "workers": 4,
+			      "estimate_current": 0.00000339,
+			      "estimate_last24h": 0.00000433,
+			      "actual_last24h": 0.0037,
+			      "hashrate_last24h": 1876221955.0729
 			   }
 			}`
 
@@ -69,7 +94,34 @@ func TestGetStatus(t *testing.T) {
 			Hashrate24h: 10668316988.396,
 			UnitFactor: 0,
 			RentalCurrent: 1.95910447,
-
+		},
+		"test3": Algo{
+			Name: "test3",
+			Port: 6576,
+			Coins: 3,
+			Fees: 2,
+			Hashrate: 2863888,
+			Workers: 4,
+			EstimateCurrent: 0.00000339,
+			EstimateLast24h: 0.00000433,
+			ActualLast24h: 0.0037,
+			Hashrate24h: 1876221955.0729,
+			UnitFactor: 0,
+			RentalCurrent: 1.36776496,
+		},
+		"test4": Algo{
+			Name: "test4",
+			Port: 8453,
+			Coins: 3,
+			Fees: 2,
+			Hashrate: 2863888,
+			Workers: 4,
+			EstimateCurrent: 0.00000339,
+			EstimateLast24h: 0.00000433,
+			ActualLast24h: 0.0037,
+			Hashrate24h: 1876221955.0729,
+			UnitFactor: 0,
+			RentalCurrent: 0,
 		},
 	}
 
